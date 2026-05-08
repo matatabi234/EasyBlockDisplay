@@ -1,4 +1,8 @@
 name: EasyBlockDisplay
-version: '1.0-SNAPSHOT'
+version: 1.0
 main: me.matatabi.easyBlockDisplay.EasyBlockDisplay
-api-version: '1.21'
+api-version: 1.21
+commands:
+  ebd: # ここを bd から ebd に変更
+    description: Easy way to spawn block displays
+    usage: /ebd <block> [scale] [offset]
