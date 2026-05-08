@@ -34,6 +34,10 @@ public class EasyBlockDisplay extends JavaPlugin implements CommandExecutor, Tab
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
         if (!(sender instanceof Player player)) return true;
+        if (!player.hasPermission("ebd.admin") && !player.isOp()) {
+            player.sendMessage("§cこのコマンドを実行する権限がありません。");
+            return true;
+        }
         if (args.length == 0) return false;
 
         String sub = args[0].toLowerCase();
@@ -136,6 +140,9 @@ public class EasyBlockDisplay extends JavaPlugin implements CommandExecutor, Tab
 
     @Override
     public List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String alias, @NotNull String[] args) {
+        if (!sender.hasPermission("ebd.admin")) {
+            return Collections.emptyList();
+        }
         if (args.length == 1) return List.of("add", "undo", "redo");
         if (args[0].equalsIgnoreCase("add")) {
             if (args.length <= 4) return List.of("~");

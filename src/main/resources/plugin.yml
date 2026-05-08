@@ -2,7 +2,15 @@ name: EasyBlockDisplay
 version: 1.0
 main: me.matatabi.easyBlockDisplay.EasyBlockDisplay
 api-version: 1.21
+
 commands:
-  ebd: # ここを bd から ebd に変更
-    description: Easy way to spawn block displays
-    usage: /ebd <block> [scale] [offset]
+  ebd:
+    description: Easy Block Display command
+    usage: /ebd <add|undo|redo>
+    permission: ebd.admin # 権限を指定
+    permission-message: §cこのコマンドを実行する権限がありません。
+
+permissions:
+  ebd.admin:
+    description: Allow use of EasyBlockDisplay commands
+    default: op # ここを op にすることで、OPのみ許可される
